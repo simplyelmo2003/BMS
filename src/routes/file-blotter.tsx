@@ -56,7 +56,7 @@ function FileBlotterPage() {
                 <p className="text-muted-foreground">Keep this token private — use it to check your case status.</p>
                 <div className="inline-flex items-center gap-3 px-5 py-3 rounded-xl bg-primary/10 border border-primary/30">
                   <span className="font-mono text-2xl font-semibold text-primary">{token}</span>
-                  <button className="text-muted-foreground hover:text-foreground" onClick={() => { navigator.clipboard.writeText(token); toast.success("Copied"); }}>
+                  <button type="button" className="text-muted-foreground hover:text-foreground" onClick={() => { navigator.clipboard.writeText(token); toast.success("Copied"); }}>
                     <Copy className="h-4 w-4" />
                   </button>
                 </div>
