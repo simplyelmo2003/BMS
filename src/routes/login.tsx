@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
 import { toast } from "sonner";
+import { Home } from "lucide-react";
 import sanroquelogo from "@/assets/sanroquelogo.jpg";
 
 export const Route = createFileRoute("/login")({
@@ -77,6 +78,12 @@ function LoginPage() {
               {busy ? "Please wait…" : mode === "login" ? "Sign in" : "Create admin account"}
             </Button>
           </form>
+          <div className="flex justify-center">
+            <a href="/" className="inline-flex items-center rounded-lg border border-input p-2 text-muted-foreground transition hover:border-primary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50">
+              <Home className="h-4 w-4" />
+              <span className="sr-only">Go home</span>
+            </a>
+          </div>
           <div className="text-center text-sm text-muted-foreground">
             {mode === "login" ? (
               <>No admin yet? <button className="text-primary underline" onClick={() => setMode("signup")}>Create the first admin</button></>
