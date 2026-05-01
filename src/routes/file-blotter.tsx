@@ -25,17 +25,22 @@ function FileBlotterPage() {
       return toast.error("Please fill all required fields.");
     }
     setBusy(true);
-    const { data, error } = await supabase.rpc("create_blotter_case", {
-      _complainant_name: form.complainant_name.trim(),
-      _complainant_contact: form.complainant_contact.trim() || null,
-      _respondent_name: form.respondent_name.trim(),
-      _incident_date: form.incident_date || null,
-      _incident_location: form.incident_location.trim() || null,
-      _description: form.description.trim(),
-    });
+    const { data, error } = await supabase
+      .from("blotter_cases")
+      .insert({
+        complainant_name: form.complainant_name.trim(),
+        complainant_contact: form.complainant_contact.trim() || null,
+        respondent_name: form.respondent_name.trim(),
+        incident_date: form.incident_date || null,
+        incident_location: form.incident_location.trim() || null,
+        description: form.description.trim(),
+        token: "",
+      })
+      .select("token")
+      .single();
     setBusy(false);
     if (error || !data) return toast.error(error?.message ?? "Submission failed");
-    setToken(data as string);
+    setToken(data.token);
   };
 
   return (

@@ -58,7 +58,7 @@ function RequestCertificatePage() {
                   </button>
                 </div>
                 <div className="flex justify-center gap-3 pt-2">
-                  <Button asChild><Link to="/track" search={{ token } as never}>Track this request</Link></Button>
+                  <Button asChild><Link to="/track" search={{ token } as never>Track this request</Link></Button>
                   <Button asChild variant="outline"><Link to="/">Done</Link></Button>
                 </div>
               </div>
