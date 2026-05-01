@@ -8,7 +8,7 @@
     }
   ],
   "routes": [
-    { "src": "/assets/(.*)", "dest": "/assets/$1", "headers": { "cache-control": "max-age=31536000, immutable" } },
-    { "src": "/.*", "dest": "/index.html", "status": 200 }
+     { "handle": "filesystem" },
+     { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
