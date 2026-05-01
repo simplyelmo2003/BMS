@@ -56,8 +56,8 @@ function FileBlotterPage() {
                   </button>
                 </div>
                 <div className="flex justify-center gap-3 pt-2">
-                  <Link to="/track" search={{ token } as never}><Button>Track this case</Button></Link>
-                  <Link to="/"><Button variant="outline">Done</Button></Link>
+                  <Button asChild><Link to="/track" search={{ token } as never}>Track this case</Link></Button>
+                  <Button asChild variant="outline"><Link to="/">Done</Link></Button>
                 </div>
               </div>
             ) : (
