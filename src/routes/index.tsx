@@ -31,8 +31,8 @@ function HomePage() {
             </div>
           </Link>
           <nav className="flex items-center gap-2">
-            <Button asChild variant="ghost" size="sm"><Link to="/track" search={{} as never}>Track</Link></Button>
-            <Button asChild variant="outline" size="sm"><Link to="/login" search={{} as never}>Admin login</Link></Button>
+            <Link to="/track" search={{} as never}><Button variant="ghost" size="sm">Track</Button></Link>
+            <Link to="/login" search={{} as never}><Button variant="outline" size="sm">Admin login</Button></Link>
           </nav>
         </div>
       </header>
@@ -56,9 +56,9 @@ function HomePage() {
             Submit certificate requests, file blotter complaints, and follow your case using a simple token number.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-3">
-            <Button asChild size="lg" variant="default" className="bg-white text-slate-950 hover:bg-slate-100"><Link to="/request-certificate">Request a Certificate</Link></Button>
-            <Button asChild size="lg" variant="secondary"><Link to="/file-blotter">File a Blotter</Link></Button>
-            <Button asChild size="lg" variant="secondary" className="bg-slate-950 text-white hover:bg-slate-800"><Link to="/track" search={{} as never}>Track with Token</Link></Button>
+            <Link to="/request-certificate"><Button size="lg" variant="default" className="bg-white text-slate-950 hover:bg-slate-100">Request a Certificate</Button></Link>
+            <Link to="/file-blotter"><Button size="lg" variant="secondary">File a Blotter</Button></Link>
+            <Link to="/track" search={{} as never}><Button size="lg" variant="secondary" className="bg-slate-950 text-white hover:bg-slate-800">Track with Token</Button></Link>
           </div>
         </div>
       </section>
@@ -76,7 +76,7 @@ function HomePage() {
               </div>
               <h3 className="mt-5 text-xl font-display font-semibold">{f.title}</h3>
               <p className="mt-2 text-sm text-muted-foreground flex-1">{f.desc}</p>
-              <Button asChild variant="ghost" className="mt-5 px-0 text-primary"><Link to={f.to}>{f.cta} →</Link></Button>
+              <Link to={f.to} className="mt-5"><Button variant="ghost" className="px-0 text-primary">{f.cta} →</Button></Link>
             </div>
           ))}
         </div>

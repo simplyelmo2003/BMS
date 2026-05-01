@@ -173,6 +173,16 @@ export type Database = {
         }
         Returns: boolean
       }
+      create_certificate_request: {
+        Args: {
+          _full_name: string
+          _address: string
+          _contact: string | null
+          _certificate_type: string
+          _purpose: string
+        }
+        Returns: string
+      }
       lookup_blotter: {
         Args: { _token: string }
         Returns: {

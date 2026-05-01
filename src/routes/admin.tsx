@@ -19,7 +19,7 @@ function AdminLayout() {
     (async () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (!session) {
-        router.navigate({ to: "/login" });
+        router.navigate({ to: "/login", search: { error: undefined } });
         return;
       }
       const { data: roles } = await supabase
@@ -29,7 +29,7 @@ function AdminLayout() {
       const isAdmin = roles?.some((r) => r.role === "admin");
       if (!isAdmin) {
         await supabase.auth.signOut();
-        router.navigate({ to: "/login", search: { error: "not_admin" } as never });
+        router.navigate({ to: "/login", search: { error: "not_admin" } });
         return;
       }
       if (mounted) {
@@ -92,7 +92,7 @@ function AdminLayout() {
             className="w-full justify-start"
             onClick={async () => {
               await supabase.auth.signOut();
-              router.navigate({ to: "/login" });
+              router.navigate({ to: "/login", search: { error: undefined } });
             }}
           >
             <LogOut className="h-4 w-4 mr-2" /> Sign out
