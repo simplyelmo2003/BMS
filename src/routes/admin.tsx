@@ -100,18 +100,37 @@ function AdminLayout() {
         </div>
       </aside>
       <main className="flex-1 min-w-0">
-        <div className="md:hidden border-b p-4 flex items-center gap-3 overflow-x-auto">
-          {navItems.map((it) => (
-            <Link
-              key={it.to}
-              to={it.to}
-              activeOptions={{ exact: it.exact }}
-              activeProps={{ className: "bg-accent text-accent-foreground" }}
-              className="px-3 py-1.5 rounded-md text-sm whitespace-nowrap"
+        <div className="md:hidden border-b p-4 flex items-center gap-3">
+          <div className="flex-1 overflow-x-auto">
+            <div className="flex items-center gap-3">
+              {navItems.map((it) => (
+                <Link
+                  key={it.to}
+                  to={it.to}
+                  activeOptions={{ exact: it.exact }}
+                  activeProps={{ className: "bg-accent text-accent-foreground" }}
+                  className="px-3 py-1.5 rounded-md text-sm whitespace-nowrap"
+                >
+                  {it.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex-shrink-0">
+            <Button
+              variant="ghost"
+              size="sm"
+              className="px-2"
+              onClick={async () => {
+                await supabase.auth.signOut();
+                router.navigate({ to: "/login", search: { error: undefined } });
+              }}
+              aria-label="Sign out"
             >
-              {it.label}
-            </Link>
-          ))}
+              <LogOut className="h-4 w-4" />
+            </Button>
+          </div>
         </div>
         <div className="p-6 md:p-10 max-w-6xl">
           <Outlet />

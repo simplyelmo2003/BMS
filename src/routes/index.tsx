@@ -116,11 +116,11 @@ function TeamDetails() {
   const [visible, setVisible] = useState(false);
 
   const team = [
-    { name: "Plaza, Elmo L.", img: plaza, role: "Lead and System Developer", contribution: "System development & maintenance" },
-    { name: "EDRADAN", img: edradan, role: "UI/UX Designer", contribution: "Designing the interface and user experience" },
-    { name: "AMATOS", img: amatos, role: "Quality Assurance Director", contribution: "Testing, bug verification, and quality control" },
-    { name: "CABALAN", img: cabalan, role: "Documentation Specialist", contribution: "Writing guides, workflows, and system documentation" },
-    { name: "PASCULADO", img: pasculado, role: "Technical Support Director", contribution: "Providing support and troubleshooting assistance" },
+    { name: "ELMO PLAZA", img: plaza, role: "Lead and System Developer", contribution: "System development & maintenance" },
+    { name: "JAN DHANIEL EDRADAN", img: edradan, role: "UI/UX Designer", contribution: "Designing the interface and user experience" },
+    { name: "REJEAN AMATOS", img: amatos, role: "Quality Assurance Director", contribution: "Testing, bug verification, and quality control" },
+    { name: "LOREMIE CABALAN", img: cabalan, role: "Documentation Specialist", contribution: "Writing guides, workflows, and system documentation" },
+    { name: "APRIL PASCULADO", img: pasculado, role: "Technical Support Director", contribution: "Providing support and troubleshooting assistance" },
   ];
 
   return (
