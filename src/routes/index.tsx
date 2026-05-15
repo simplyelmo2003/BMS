@@ -132,18 +132,18 @@ function TeamDetails() {
       </div>
 
       {visible && (
-        <div className="max-w-4xl mx-auto mt-6 space-y-4">
+        <div className="max-w-4xl mx-auto mt-6 space-y-4 px-4 sm:px-0">
           {team.map((member) => (
             <div
               key={member.name}
-              className="flex items-center gap-6 rounded-2xl p-4 bg-gradient-to-r from-white/5 to-white/2 backdrop-blur-md shadow-lg hover:scale-105 transform transition duration-300"
+              className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6 rounded-2xl p-4 bg-gradient-to-r from-white/5 to-white/2 backdrop-blur-md shadow-lg md:hover:scale-105 transform-gpu transition duration-300 overflow-hidden"
             >
               <div className="flex-shrink-0 rounded-full overflow-hidden ring-4 ring-white/10">
-                <Avatar className="h-28 w-28">
+                <Avatar className="h-20 w-20 md:h-28 md:w-28">
                   {member.img ? (
                     <AvatarImage src={member.img} alt={member.name} className="h-full w-full object-cover" />
                   ) : (
-                    <AvatarFallback className="text-3xl">{member.name
+                    <AvatarFallback className="text-2xl md:text-3xl">{member.name
                       .split(" ")
                       .map((n) => n[0])
                       .join("")}</AvatarFallback>
@@ -152,8 +152,8 @@ function TeamDetails() {
               </div>
 
               <div className="text-left flex-1">
-                <div className="flex items-center justify-between">
-                  <div className="text-lg font-semibold drop-shadow-sm">{member.name}</div>
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 md:gap-0">
+                  <div className="text-base md:text-lg font-semibold leading-tight">{member.name}</div>
                   <span className="inline-block px-3 py-1 text-xs rounded-full bg-accent text-accent-foreground">{member.role}</span>
                 </div>
                 <div className="mt-2 text-sm text-muted-foreground">{member.contribution}</div>
