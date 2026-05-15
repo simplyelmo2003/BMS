@@ -15,7 +15,17 @@ export const Route = createFileRoute("/request-certificate")({
   component: RequestCertificatePage,
 });
 
-const TYPES = ["Barangay Clearance", "Certificate of Indigency", "Certificate of Residency", "Business Permit", "Good Moral Character", "Other"];
+const TYPES = [
+  "Barangay Clearance",
+  "Certificate of Indigency",
+  "Certificate of Residency",
+  "Business Permit",
+  "Business Clearance",
+  "Barangay Certificate of Low Income",
+  "Barangay Certificate",
+  "Good Moral Character",
+  "Other",
+];
 
 function RequestCertificatePage() {
   const [form, setForm] = useState({ full_name: "", address: "", contact: "", certificate_type: "Barangay Clearance", purpose: "" });
