@@ -2,7 +2,14 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import sanroquehall from "@/assets/sanroquehall.png";
 import sanroquelogo from "@/assets/sanroquelogo.jpg";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
 import { FileText, ShieldAlert, Search } from "lucide-react";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import amatos from "@/assets/amatos.jpg";
+import cabalan from "@/assets/cabalan.png";
+import edradan from "@/assets/edradan.png";
+import pasculado from "@/assets/pasculado.jpg";
+import plaza from "@/assets/plaza.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -17,6 +24,7 @@ export const Route = createFileRoute("/")({
 });
 
 function HomePage() {
+  const [showTeam, setShowTeam] = useState(false);
   return (
     <div className="min-h-screen bg-background">
       <header className="border-b">
@@ -83,8 +91,77 @@ function HomePage() {
       </section>
 
       <footer className="border-t py-8 text-center text-sm text-muted-foreground">
-        © {new Date().getFullYear()} Barangay Management System
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <div className="text-xl font-semibold">Meet the Team</div>
+            <TeamToggle />
+          </div>
+
+          <TeamDetails />
+          <div className="text-center">© {new Date().getFullYear()} Barangay Management System</div>
+        </div>
       </footer>
+    </div>
+  );
+}
+
+function TeamToggle() {
+  // This component uses a shared state via closure in the file-level HomePage.
+  // To keep things simple and local, we'll return a placeholder; the real toggle is below.
+  return null;
+}
+
+function TeamDetails() {
+  // Local state for demo toggle
+  const [visible, setVisible] = useState(false);
+
+  const team = [
+    { name: "Plaza, Elmo L.", img: plaza, role: "Lead and System Developer", contribution: "System development & maintenance" },
+    { name: "EDRADAN", img: edradan, role: "UI/UX Designer", contribution: "Designing the interface and user experience" },
+    { name: "AMATOS", img: amatos, role: "Quality Assurance Director", contribution: "Testing, bug verification, and quality control" },
+    { name: "CABALAN", img: cabalan, role: "Documentation Specialist", contribution: "Writing guides, workflows, and system documentation" },
+    { name: "PASCULADO", img: pasculado, role: "Technical Support Director", contribution: "Providing support and troubleshooting assistance" },
+  ];
+
+  return (
+    <div className="text-center mb-6">
+      <div className="flex items-center justify-center">
+        <Button variant="outline" onClick={() => setVisible((v) => !v)} size="sm">
+          {visible ? "Hide Team" : "Show Team"}
+        </Button>
+      </div>
+
+      {visible && (
+        <div className="max-w-4xl mx-auto mt-6 space-y-4">
+          {team.map((member) => (
+            <div
+              key={member.name}
+              className="flex items-center gap-6 rounded-2xl p-4 bg-gradient-to-r from-white/5 to-white/2 backdrop-blur-md shadow-lg hover:scale-105 transform transition duration-300"
+            >
+              <div className="flex-shrink-0 rounded-full overflow-hidden ring-4 ring-white/10">
+                <Avatar className="h-28 w-28">
+                  {member.img ? (
+                    <AvatarImage src={member.img} alt={member.name} className="h-full w-full object-cover" />
+                  ) : (
+                    <AvatarFallback className="text-3xl">{member.name
+                      .split(" ")
+                      .map((n) => n[0])
+                      .join("")}</AvatarFallback>
+                  )}
+                </Avatar>
+              </div>
+
+              <div className="text-left flex-1">
+                <div className="flex items-center justify-between">
+                  <div className="text-lg font-semibold drop-shadow-sm">{member.name}</div>
+                  <span className="inline-block px-3 py-1 text-xs rounded-full bg-accent text-accent-foreground">{member.role}</span>
+                </div>
+                <div className="mt-2 text-sm text-muted-foreground">{member.contribution}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
